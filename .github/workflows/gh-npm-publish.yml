@@ -25,13 +25,13 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           # 在源代码中，这个会默认被转换成小写
           scope: '@L2Eme'
-      - run: yarn
-      # - run: yarn add jest
-      # - run: yarn test
-      - run: yarn build
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - run: yarn
+      # # - run: yarn add jest
+      # # - run: yarn test
+      # - run: yarn build
+      # - run: yarn publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       # 使用action删除旧版本
       # - uses: actions/delete-package-versions@v1
       #   with:

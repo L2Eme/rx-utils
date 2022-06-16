@@ -1,9 +1,12 @@
 {
-  "name": "@l2eme/template",
+  "name": "@line100/rx-utils",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git@github.com:L2Eme/template.git"
+    "url": "git@github.com:L2Eme/rx-utils.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "license": "MIT",
   "version": "0.1.0",
@@ -25,6 +28,7 @@
     }
   },
   "dependencies": {
+    "rxjs": "7.5.5",
     "tslib": "^2.3.1"
   },
   "files": [

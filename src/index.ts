@@ -1,4 +1,2 @@
-// TODO: add some cool features
-export function hello() {
-	console.log('Hello world!')
-}
+export { CacheServiceStorage, CacheService } from './CacheService'
+export { StreamHandler, StreamService } from './StreamService'
