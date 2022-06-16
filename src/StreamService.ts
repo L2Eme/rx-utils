@@ -1,6 +1,6 @@
 import {
 	Observable, Subject, EMPTY,
-	filter, takeUntil, mergeMap, shareReplay, catchError, throttleTime,
+	takeUntil, mergeMap, shareReplay, catchError, throttleTime,
 	of, race, skipUntil, timer, take, map,
 } from 'rxjs';
 
