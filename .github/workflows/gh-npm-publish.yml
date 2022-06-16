@@ -1,0 +1,40 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  release:
+    # 当一个release标签被创建时才会触发
+    types: [created]
+
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          # 使用缓存
+          cache: 'yarn'
+          # 配置registory可以免去在项目中提供.npmrc
+          registry-url: https://npm.pkg.github.com/
+          # 在源代码中，这个会默认被转换成小写
+          scope: '@L2Eme'
+      - run: yarn
+      # - run: yarn add jest
+      # - run: yarn test
+      - run: yarn build
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # 使用action删除旧版本
+      # - uses: actions/delete-package-versions@v1
+      #   with:
+      #     # 此处若使用@l2eme/template无法找到对应的包
+      #     package-name: 'template'
+      #     num-old-versions-to-delete: 1

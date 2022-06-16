@@ -1,0 +1,29 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          # 使用cache
+          cache: 'yarn'
+          # 配置registory可以免去在项目中提供.npmrc
+          registry-url: https://npm.pkg.github.com/
+          # 在源代码中，这个会默认被转换成小写
+          scope: '@L2Eme'
+      - run: yarn
+      - run: yarn add jest
+      - run: yarn build
+      - run: npx jest ./dist/cjs/test

@@ -1,0 +1,40 @@
+{
+  "name": "@l2eme/template",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:L2Eme/template.git"
+  },
+  "license": "MIT",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && tsc -b tsconfig.esm.json"
+  },
+  "typesVersions": {
+    ">=4.2": {
+      "*": [
+        "./dist/esm/*"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
+  "files": [
+    "dist/esm/**/*.(js|d.ts)",
+    "dist/cjs/**/*.(js|d.ts)",
+    "src/*.ts",
+    "CHANGELOG.md",
+    "README.md",
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.esm.json"
+  ]
+}
